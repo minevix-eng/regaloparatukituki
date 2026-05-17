@@ -108,22 +108,24 @@
                 </div>
             </div>
 
-            <p class="music-footer">Cada una de estas musicas tienen lago en comun me recuerdan momentos q tuvimos &lt;3.</p>
+            <p class="music-footer">Cada una de estas musicas tienen algo en comun me recuerdan momentos q tuvimos &lt;3.</p>
             <button class="btn-retro back-btn" onclick="regresarMenuDesdeMusica()">VOLVER</button>
         </div>
     </div>
 
-    <div class="cake-screen" id="cakeScreen" style="display: none;">
+    <script src="script.js"></script>
+
+   <div class="cake-screen" id="cakeScreen" style="display: none;">
         <div id="confettiContainer"></div>
         
-        <div class="cake-wrapper">
+        <div class="cake-wrapper" onclick="blowCandle()">
             <div class="candles-row">
                 <div class="retro-candle" id="candle1"><div class="flame"></div></div>
                 <div class="retro-candle" id="candle2"><div class="flame"></div></div>
                 <div class="retro-candle" id="candle3"><div class="flame"></div></div>
             </div>
             
-            <div class="retro-cake" onclick="blowCandle()">
+            <div class="retro-cake">
                 <div class="cake-crema"></div>
                 <div class="cake-frosting"></div>
             </div>
@@ -136,7 +138,5 @@
             <button class="btn-retro back-btn" onclick="regresarMenuDesdePastel()">VOLVER</button>
         </div>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
