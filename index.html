@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Reto de Cumpleaños!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="start-screen" id="startScreen">
+        <h1 class="game-title">¿QUIERES ABRIR<br>TU REGALO? ❤️</h1>
+        <div class="button-group">
+            <button class="btn-retro btn-yes" id="btnYes" onclick="aceptarRegalo()">SÍ</button>
+            <button class="btn-retro btn-no" id="btnNo" onclick="rechazarRegalo()">NO</button>
+        </div>
+    </div>
+
+    <div class="gifts-screen" id="giftsScreen" style="display: none;">
+        <h2 class="gifts-subtitle">¿Tus regalos?</h2>
+        <p class="gifts-instruction">Haz clic para descubrir tu sorpresa</p>
+        
+        <div class="gifts-grid">
+            <button class="gift-box item-slot" onclick="verRegalo('carta')">
+                <span class="item-icon">✉️</span>
+            </button>
+            <button class="gift-box item-slot" onclick="verRegalo('corazon')">
+                <span class="item-icon">❤️</span>
+            </button>
+            <button class="gift-box item-slot" onclick="verRegalo('pokebola')">
+                <div class="pokeball slot-pokeball"></div>
+            </button> 
+            <button class="gift-box item-slot" onclick="verRegalo('notas')">
+                <span class="item-icon">🎵</span>
+            </button>
+            <button class="gift-box item-slot" onclick="verRegalo('pastel')">
+                <span class="item-icon">🎂</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="letter-screen" id="letterScreen" style="display: none;" onclick="avanzarCarta()">
+        <div class="letter-box">
+            <div class="tape"></div>
+            <p id="letterText" class="letter-content"></p>
+            <div class="next-triangle" id="nextTriangle"></div>
+        </div>
+    </div>
+
+    <div class="zelda-screen" id="heartScreen" style="display: none;" onclick="avanzarCorazon()">
+        <div class="zelda-box">
+            <p id="heartText" class="zelda-content"></p>
+            <div class="zelda-footer">
+                <span class="heart-icon">❤️</span>
+                <div class="next-triangle-down" id="heartTriangle"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pokeball-game-screen" id="pokeballGameScreen" style="display: none;">
+        <div class="pokeball-game-area" id="pokeballGameArea"></div>
+        <div class="poke-dialogue-box" id="pokeDialogue" style="display: none;">
+            <p>Mmm... Esta pokebola no es.</p>
+        </div>
+    </div>
+
+    <div class="reward-screen" id="rewardScreen" style="display: none;" onclick="regresarMenuGifts()">
+        <div class="reward-container">
+            <div class="reward-pokeball" id="rewardPokeball">
+                <div class="pokeball"></div>
+            </div>
+            <div class="pokemon-card-wrapper" id="pokemonCardWrapper">
+                <img src="carta_pokemon.png" class="retro-card-img" alt="Tarjeta Pokémon">
+                <div class="next-triangle-down card-triangle"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="music-screen" id="musicScreen" style="display: none;">
+        <div class="chest-container" id="chestContainer" onclick="clickChest()">
+            <div class="retro-chest" id="retroChest">
+                <div class="chest-lid"></div>
+                <div class="chest-lock"></div>
+            </div>
+            <p class="chest-instruction">¡UN COFRE MISTERIOSO!<br>Golpéalo para abrirlo</p>
+        </div>
+
+        <div class="music-box" id="musicBox" style="display: none;">
+            <h2 class="music-title">MUSICAS Q ME RECUERDAN ATI</h2>
+            
+            <div class="song-list">
+                <div class="song-item">
+                    <p class="song-name">Tus ojitos lindos</p>
+                    <audio controls src="audio/ojitos_lindos.mp3"></audio>
+                </div>
+                <div class="song-item">
+                    <p class="song-name">Quiero volver a ese lugar</p>
+                    <audio controls src="audio/quiero_volver.mp3"></audio>
+                </div>
+                <div class="song-item">
+                    <p class="song-name">Yo aun te recuerdo</p>
+                    <audio controls src="audio/te_recuerdo.mp3"></audio>
+                </div>
+                <div class="song-item">
+                    <p class="song-name">Los momentos q tuvimos</p>
+                    <audio controls src="audio/momentos_tuvimos.mp3"></audio>
+                </div>
+            </div>
+
+            <p class="music-footer">Cada una de estas musicas tienen lago en comun me recuerdan momentos q tuvimos &lt;3.</p>
+            <button class="btn-retro back-btn" onclick="regresarMenuDesdeMusica()">VOLVER</button>
+        </div>
+    </div>
+
+    <div class="cake-screen" id="cakeScreen" style="display: none;">
+        <div id="confettiContainer"></div>
+        
+        <div class="cake-wrapper">
+            <div class="candles-row">
+                <div class="retro-candle" id="candle1"><div class="flame"></div></div>
+                <div class="retro-candle" id="candle2"><div class="flame"></div></div>
+                <div class="retro-candle" id="candle3"><div class="flame"></div></div>
+            </div>
+            
+            <div class="retro-cake" onclick="blowCandle()">
+                <div class="cake-crema"></div>
+                <div class="cake-frosting"></div>
+            </div>
+            
+            <p class="cake-hint" id="cakeHint">¡Haz tap en la torta para soplar las velas!</p>
+        </div>
+
+        <div class="birthday-overlay" id="birthdayOverlay" style="display: none;">
+            <h1 class="birthday-text">¡¡¡¡FELIZ CUMPLEAÑOS<br>MI TUKITUKI!!!!! 🎂🎉</h1>
+            <button class="btn-retro back-btn" onclick="regresarMenuDesdePastel()">VOLVER</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
